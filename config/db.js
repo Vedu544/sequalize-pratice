@@ -5,7 +5,14 @@ const sequelize = new Sequelize('sequelize_practice', 'root', 'your_mysql_passwo
   host: 'localhost',
   dialect: 'mysql'
 });
+const User = require('../models/User')(sequelize, DataTypes);
+const Bus = require('../models/Bus')(sequelize, DataTypes);
+const Booking = require('../models/Booking')(sequelize, DataTypes);
+const Payment = require('../models/Payment')(sequelize, DataTypes);
 
+sequelize.sync();
+
+module.exports = { sequelize, User, Bus, Booking, Payment };
 module.exports = sequelize;
 
 
